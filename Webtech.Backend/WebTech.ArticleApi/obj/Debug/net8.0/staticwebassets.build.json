@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "fYzTAy4iQTwTSTavR6HrgAav1FrEAAMHozTyeBVgqPs=",
+  "Source": "WebTech.ArticleApi",
+  "BasePath": "_content/WebTech.ArticleApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.AuthAPI/WebTech.AuthAPI.csproj",
+      "Version": 2,
+      "Source": "WebTech.AuthAPI",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

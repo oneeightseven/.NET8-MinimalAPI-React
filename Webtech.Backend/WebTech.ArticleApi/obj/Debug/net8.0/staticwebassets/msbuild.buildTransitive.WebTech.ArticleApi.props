@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/WebTech.ArticleApi.props" />
+</Project>

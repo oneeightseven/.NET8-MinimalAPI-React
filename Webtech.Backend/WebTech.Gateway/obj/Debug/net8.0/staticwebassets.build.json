@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "PyeFbWsUxKw+Rf8MwV+eQLNES46ACAZXyWoeYdjHgG8=",
+  "Source": "WebTech.Gateway",
+  "BasePath": "_content/WebTech.Gateway",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

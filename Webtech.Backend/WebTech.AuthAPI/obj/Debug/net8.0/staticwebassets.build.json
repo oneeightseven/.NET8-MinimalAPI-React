@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "wfkwLZoMQWPccjUGmsR95EyXLK6ORYD2ufM5TDBudRM=",
+  "Source": "WebTech.AuthAPI",
+  "BasePath": "_content/WebTech.AuthAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

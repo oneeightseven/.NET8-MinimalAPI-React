@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('font.ttf') format('truetype');
+}
+
+body{
+    background-color:whitesmoke;
+}
+
+
+h1,h2,h3,h4,h5,h6, p, a, span{
+    font-family: 'MyFont', sans-serif;
+}
+
+.btnLogin{
+    background: #2C4251;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.btnLogin:disabled{
+    opacity: 0.5;
+}
