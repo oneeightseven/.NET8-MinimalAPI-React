@@ -10,6 +10,7 @@ const LogoutButton = () => {
     const handleClearCookies = () => {
         document.cookie = 'role=; Max-Age=-1; path=/;';
         document.cookie = 'token=; Max-Age=-1; path=/;';
+        localStorage.setItem('countNotification', 0);
         AuthNotify.logoutSuccess();
         navigate("/")
     };

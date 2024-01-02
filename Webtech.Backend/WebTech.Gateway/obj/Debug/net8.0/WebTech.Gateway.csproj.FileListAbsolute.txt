@@ -44,3 +44,4 @@
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.Gateway/obj/Debug/net8.0/WebTech.Gateway.pdb
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.Gateway/obj/Debug/net8.0/WebTech.Gateway.genruntimeconfig.cache
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.Gateway/obj/Debug/net8.0/ref/WebTech.Gateway.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.Gateway/obj/Debug/net8.0/WebTech.Gateway.sourcelink.json

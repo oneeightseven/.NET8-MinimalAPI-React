@@ -2,11 +2,12 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {getRole} from "../../extensions/encryption";
 import Notifications from "../Auth/Notifications";
+import {Image} from "react-bootstrap";
+import { ReactComponent as Noti } from '../../noti.svg'
 
 const Header = () => {
     return (
         <>
-            <Notifications/>
             <div className="container-fluid" style={{boxShadow: '1px 70px 80px black'}}>
                 <div className="row">
                     <div className="col-xl-12" style={{backgroundColor: '#2C4251', borderBottom: '1px solid black'}}>
@@ -54,19 +55,28 @@ const Header = () => {
                                     <Link style={{textDecoration: 'none'}} to="/"><h6
                                         style={{color: 'white'}}>Marketing</h6></Link>
                                 </div>
-                                <div className="offset-xl-5 col-xl-2 col-10 text-xl-end mt-xl-3">
-                                    {getRole() !== undefined ? (
-                                        <Link style={{textDecoration: 'none'}} to="/PersonalArea"><h6
-                                            style={{color: 'white'}}>Personal area</h6></Link>
-                                    ) : (
-                                        <Link style={{textDecoration: 'none'}} to="/Login"><h6
-                                            style={{color: 'white'}}>Login</h6></Link>
-                                    )}
+                                <div className="offset-xl-3 col-xl-4 col-10 text-xl-end mt-xl-1" style={{color:"white"}}>
+                                    <h6>
+                                        {getRole() !== undefined ? (
+                                            <>
+                                                <Link style={{ textDecoration: 'none' }} to="/PersonalArea">
+                                                    <h6 style={{ color: 'white' }}>Personal area</h6>
+                                                </Link>
+                                                <Notifications /><Noti width={22} height={22} fill='white' />
+                                            </>
+                                        ) : (
+                                            <Link style={{ textDecoration: 'none' }} to="/Login">
+                                                <h6 style={{ color: 'white' }}>Login</h6>
+                                            </Link>
+                                        )}
+                                    </h6>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </>
 

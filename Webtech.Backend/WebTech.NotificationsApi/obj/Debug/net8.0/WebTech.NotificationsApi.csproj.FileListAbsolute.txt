@@ -42,3 +42,17 @@
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/AWSSDK.Core.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/AWSSDK.SecurityToken.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/DnsClient.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/MongoDB.Bson.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/MongoDB.Driver.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/MongoDB.Driver.Core.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/MongoDB.Libmongocrypt.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/SharpCompress.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/Snappier.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/ZstdSharp.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/runtimes/linux/native/libmongocrypt.so
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/runtimes/osx/native/libmongocrypt.dylib
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/bin/Debug/net8.0/runtimes/win/native/mongocrypt.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.NotificationsApi/obj/Debug/net8.0/WebTech.NotificationsApi.sourcelink.json

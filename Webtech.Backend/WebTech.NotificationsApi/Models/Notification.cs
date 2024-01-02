@@ -1,9 +1,11 @@
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace WebTech.NotificationsApi.Models;
 
 public class Notification
 {
-    public string? ArticleId { get; set; }
+    [BsonId] 
     public string? AuthorId { get; set; }
-    public string? UserLiked { get; set; }
-    public DateTime? Timestamp { get; set; }
+    [BsonElement("UnreviewedNotifications")] 
+    public List<string> UnreviewedNotifications { get; set; } = new();
 }

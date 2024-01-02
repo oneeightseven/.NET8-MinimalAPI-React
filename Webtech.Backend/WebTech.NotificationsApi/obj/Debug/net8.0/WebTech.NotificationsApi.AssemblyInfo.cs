@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebTech.NotificationsApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b6a494dda1ab91d5f8aa25a95fcc13204aded1e")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebTech.NotificationsApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebTech.NotificationsApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

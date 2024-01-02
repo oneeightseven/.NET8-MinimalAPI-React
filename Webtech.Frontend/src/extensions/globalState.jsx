@@ -1,5 +1,5 @@
 const globalState = {
-    isConnected: false
+    isConnected: false,
 }
 
 export default globalState;
