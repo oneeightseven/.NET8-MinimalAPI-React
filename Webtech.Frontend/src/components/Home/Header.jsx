@@ -62,7 +62,9 @@ const Header = () => {
                                                 <Link style={{ textDecoration: 'none' }} to="/PersonalArea">
                                                     <h6 style={{ color: 'white' }}>Personal area</h6>
                                                 </Link>
+                                                <Link style={{ textDecoration: 'none', color: "white" }} to="/Notifications">
                                                 <Notifications /><Noti width={22} height={22} fill='white' />
+                                                </Link>
                                             </>
                                         ) : (
                                             <Link style={{ textDecoration: 'none' }} to="/Login">

@@ -6,6 +6,6 @@ public class Notification
 {
     [BsonId] 
     public string? AuthorId { get; set; }
-    [BsonElement("UnreviewedNotifications")] 
-    public List<string> UnreviewedNotifications { get; set; } = new();
+    [BsonElement("Notifications")] 
+    public List<NotificationBody> Notifications { get; set; } = new();
 }

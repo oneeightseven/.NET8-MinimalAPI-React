@@ -22,10 +22,13 @@ public class NotificationService
     
     public async Task CreateAsync(Notification notification) => await _notificationsCollection.InsertOneAsync(notification);
 
-    public async Task<UpdateResult> AddNotification(string authorId, string notification)
+    public async Task<UpdateResult> AddNotification(NotificationBody notification, string authorId)
     {
         var filter = Builders<Notification>.Filter.Eq(u => u.AuthorId, authorId);
-        var update = Builders<Notification>.Update.Push(u => u.UnreviewedNotifications, notification);
+        
+        var update = Builders<Notification>.Update.Push(u => u.Notifications, notification);
+        
         return await _notificationsCollection.UpdateOneAsync(filter, update);
     }
+    public async Task RemoveAsync(string id) => await _notificationsCollection.DeleteOneAsync(x => x.AuthorId == id);
 }

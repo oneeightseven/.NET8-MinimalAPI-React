@@ -9,6 +9,7 @@ import PersonalArea from "./pages/Auth/PersonalArea";
 import Registration from "./pages/Auth/Registration";
 import { ToastContainer, toast } from 'react-toastify';
 import Notifications from "./components/Auth/Notifications";
+import NotificationHistory from "./pages/Notification/NotificationHistory";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                    <Route path={"/registration"} element={<Registration />}/>
                    <Route path={"/personalArea"} element={<PersonalArea/>}/>
                    <Route path={"/noti"} element={<Notifications/>}/>
+                   <Route path={"/notifications"} element={<NotificationHistory/>}/>
                </Routes>
            </BrowserRouter>
            <ToastContainer/>

@@ -9,6 +9,7 @@ import Dislike from "../../dislike.svg";
 import ArticleService from "../../services/ArticleService";
 import {getToken} from "../../extensions/encryption";
 import AuthNotify from "../../notify/AuthNotify";
+import NotificationService from "../../services/NotificationService";
 
 const PostBody = () => {
 
@@ -28,6 +29,14 @@ const PostBody = () => {
 
     const [bodyId, setBodyId] = useState(0);
     const [authorId, setAuthorId] = useState(0);
+
+    const notification = ({
+        date: "",
+        userName: "",
+        articleId: "",
+        articleTitle: "",
+        statusNotification: "0"
+    });
 
     const imageUrls = [article.articleBody.imageUrl1, article.articleBody.imageUrl2, article.articleBody.imageUrl3];
 
@@ -53,6 +62,7 @@ const PostBody = () => {
                 setIsLiked(true);
                 setLikeCount(likeCount + 1);
                 await ArticleService.addLike(bodyId);
+                await NotificationService.addNotification(authorId, notification);
                 await ArticleService.incrementLikeArticle(bodyId);
                 await ArticleService.sendNotificationAuthor(authorId);
                 if (isDisliked) {
@@ -97,6 +107,8 @@ const PostBody = () => {
         try {
             setArticle(await ArticleService.getBody(postId));
             setLikeCount(article.articleHeader.likes);
+            notification.articleTitle = article.articleHeader.title;
+            notification.articleId = article.articleHeader.id;
             setDislikeCount(article.articleHeader.dislikes);
             setBodyId(article.articleHeader.articleBodyId);
             setAuthorId(article.articleHeader.authorId);

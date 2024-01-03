@@ -6,7 +6,7 @@ using WebTech.NotificationsApi;
 using WebTech.NotificationsApi.Data;
 using WebTech.NotificationsApi.Service;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using WebTech.NotificationsApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -81,31 +81,34 @@ app.MapGet("api/NotificationAPI/GetNotifications",
     {
         var userId = GetUserId(context.User);
         var result = await notificationService.GetAsync(userId!);
-
-        return Results.Ok(result);
+        
+        return Results.Ok(result.Notifications);
     });
 
+
+//TODO ПЕРЕДЕЛАТЬ 
 app.MapGet("api/NotificationAPI/GetCountNotifications",
     [Authorize] async (NotificationService notificationService, HttpContext context) =>
     {
         var userId = GetUserId(context.User);
         var result = await notificationService.GetAsync(userId!);
 
-        return Results.Ok(result.UnreviewedNotifications.Count());
+        return Results.Ok(result.Notifications.Count());
     });
 
-app.MapPost("api/NotificationAPI/AddNotification",
-    [Authorize] async (NotificationService notificationService, HttpContext context, string authorId, string articleHeader) =>
+app.MapPost("api/NotificationAPI/AddNotification/{authorId}",
+    [Authorize] async (NotificationService notificationService, HttpContext context, [FromBody] NotificationBody notificationBody, string authorId) =>
     {
-        var userName = GetUserName(context.User);
+        notificationBody.UserName = GetUserName(context.User);
+        notificationBody.Date = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
+        notificationBody.Checked = false;
         
-        var notificationAuthor = await notificationService.GetAsync(authorId!);
+        var notificationAuthor = await notificationService.GetAsync(authorId);
 
         if (notificationAuthor == null)
             await CreateNotificationsForAuthor(authorId, notificationService);
-
-        string notification = ($"{userName} Liked the article: {articleHeader}");
-        await notificationService.AddNotification(authorId, notification);
+        
+        await notificationService.AddNotification(notificationBody, authorId);
         
         return Results.Ok();
     });
