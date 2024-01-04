@@ -30,12 +30,12 @@ const PostBody = () => {
     const [bodyId, setBodyId] = useState(0);
     const [authorId, setAuthorId] = useState(0);
 
-    const notification = ({
+    const [notification, setNotification] = useState({
         date: "",
         userName: "",
         articleId: "",
         articleTitle: "",
-        statusNotification: "0"
+        statusNotification: false
     });
 
     const imageUrls = [article.articleBody.imageUrl1, article.articleBody.imageUrl2, article.articleBody.imageUrl3];
@@ -107,11 +107,14 @@ const PostBody = () => {
         try {
             setArticle(await ArticleService.getBody(postId));
             setLikeCount(article.articleHeader.likes);
-            notification.articleTitle = article.articleHeader.title;
-            notification.articleId = article.articleHeader.id;
             setDislikeCount(article.articleHeader.dislikes);
             setBodyId(article.articleHeader.articleBodyId);
             setAuthorId(article.articleHeader.authorId);
+            setNotification(prevState => ({
+                ...prevState,
+                articleTitle: article.articleHeader.title,
+                articleId: article.articleHeader.id
+            }));
         } catch (error) {
             console.error(error);
         }

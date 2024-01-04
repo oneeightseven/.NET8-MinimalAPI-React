@@ -2,10 +2,10 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {getRole} from "../../extensions/encryption";
 import Notifications from "../Auth/Notifications";
-import {Image} from "react-bootstrap";
 import { ReactComponent as Noti } from '../../noti.svg'
 
 const Header = () => {
+
     return (
         <>
             <div className="container-fluid" style={{boxShadow: '1px 70px 80px black'}}>

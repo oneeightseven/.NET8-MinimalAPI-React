@@ -1,11 +1,15 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import Notifications from "../Auth/Notifications";
+import {getRole} from "../../extensions/encryption";
 
 const AccountHeader = () => {
     return (<>
+        {getRole() !== undefined ? (
         <Notifications/>
-
+            ): (
+            <></>
+        )}
             <div className="container-fluid" style={{boxShadow: '1px 10px 80px black'}}>
                 <div className="row">
                     <div className="col-xl-12" style={{backgroundColor: '#2C4251', borderBottom: '1px solid black'}}>

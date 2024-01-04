@@ -7,13 +7,10 @@ import globalState from "../../extensions/globalState";
 import axios from "axios";
 import NotificationService from "../../services/NotificationService";
 
-
 const useToken = () => {
     const [cookies] = useCookies(['token']);
     return cookies.token;
 };
-
-
 
 const Notifications = () => {
 

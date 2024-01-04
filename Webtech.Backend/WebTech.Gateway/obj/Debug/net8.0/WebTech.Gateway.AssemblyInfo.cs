@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebTech.Gateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d85994d598b8bb5ead043a5ec2c72e85755e55f9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+204339c0246bc6f19babae40e34009a3bb30645d")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebTech.Gateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebTech.Gateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

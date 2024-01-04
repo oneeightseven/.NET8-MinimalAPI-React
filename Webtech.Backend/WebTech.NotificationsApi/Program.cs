@@ -82,18 +82,27 @@ app.MapGet("api/NotificationAPI/GetNotifications",
         var userId = GetUserId(context.User);
         var result = await notificationService.GetAsync(userId!);
         
-        return Results.Ok(result.Notifications);
+        return Results.Ok(result.Notifications.OrderByDescending(x => x.Date));
+    });
+
+app.MapPost("api/NotificationAPI/MarkNotificationsAsRead",
+    [Authorize] async (NotificationService notificationService, HttpContext context) =>
+    {
+        var authorId = GetUserId(context.User);
+
+        await notificationService.MarkNotificationsAsRead(authorId!);
+        
+        return Results.Ok();
     });
 
 
-//TODO ПЕРЕДЕЛАТЬ 
 app.MapGet("api/NotificationAPI/GetCountNotifications",
     [Authorize] async (NotificationService notificationService, HttpContext context) =>
     {
         var userId = GetUserId(context.User);
         var result = await notificationService.GetAsync(userId!);
-
-        return Results.Ok(result.Notifications.Count());
+        
+        return Results.Ok(result.Notifications.Where(x => x.Checked == false).Count());
     });
 
 app.MapPost("api/NotificationAPI/AddNotification/{authorId}",

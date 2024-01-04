@@ -116,12 +116,13 @@ app.MapGet("api/ArticleApi/GetUserFeedbackDislikeArticles", [Authorize] async (A
     return Results.Ok(articles);
 });
 
-app.MapPost("api/ArticleApi/CreateArticle", [Authorize] async (ApplicationDbContext context, ArticleDto articleDto) =>
+app.MapPost("api/ArticleApi/CreateArticle", [Authorize] async (ApplicationDbContext context, ArticleDto articleDto, HttpContext httpContext) =>
 {
     try
     {
         articleDto.ArticleHeader!.Date = DateTime.Today;
         articleDto.ArticleHeader.ArticleBody = articleDto.ArticleBody;
+        articleDto.ArticleHeader.AuthorId = GetUserId(httpContext.User)!;
 
         await context.AddRangeAsync(articleDto.ArticleBody!, articleDto.ArticleHeader);
         await context.SaveChangesAsync();

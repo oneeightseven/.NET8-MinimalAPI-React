@@ -114,3 +114,4 @@
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.ArticleApi/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.ArticleApi/bin/Debug/net8.0/WebTech.AuthAPI.dll
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.ArticleApi/bin/Debug/net8.0/WebTech.AuthAPI.pdb
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.ArticleApi/obj/Debug/net8.0/WebTech.ArticleApi.sourcelink.json
