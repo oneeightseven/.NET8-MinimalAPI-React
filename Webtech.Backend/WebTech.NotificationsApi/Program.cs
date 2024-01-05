@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebTech.NotificationsApi.Models;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDatabase"));
 builder.Services.AddSingleton<NotificationService>();
@@ -76,63 +76,51 @@ app.MapPost("PostMessage", async (string userId, IHubContext<NotificationHub> hu
     return Results.Ok();
 });
 
-app.MapGet("api/NotificationAPI/GetNotifications",
+app.MapGet("api/NotificationAPI/GetNotifications", 
     [Authorize] async (NotificationService notificationService, HttpContext context) =>
-    {
-        var userId = GetUserId(context.User);
-        var result = await notificationService.GetAsync(userId!);
-        
-        return Results.Ok(result.Notifications.OrderByDescending(x => x.Date));
-    });
+{
+    var userId = GetUserId(context.User);
+    var result = await notificationService.GetAsync(userId!);
 
-app.MapPost("api/NotificationAPI/MarkNotificationsAsRead",
-    [Authorize] async (NotificationService notificationService, HttpContext context) =>
-    {
-        var authorId = GetUserId(context.User);
-
-        await notificationService.MarkNotificationsAsRead(authorId!);
-        
-        return Results.Ok();
-    });
-
+    return Results.Ok(result.Notifications.OrderByDescending(x => x.Date));
+});
 
 app.MapGet("api/NotificationAPI/GetCountNotifications",
     [Authorize] async (NotificationService notificationService, HttpContext context) =>
-    {
-        var userId = GetUserId(context.User);
-        var result = await notificationService.GetAsync(userId!);
+{
+    var userId = GetUserId(context.User);
+    var result = await notificationService.GetAsync(userId!);
         
-        return Results.Ok(result.Notifications.Where(x => x.Checked == false).Count());
-    });
+    return Results.Ok(result.Notifications.Count(x => x.Checked == false));
+});
+
+app.MapPost("api/NotificationAPI/MarkNotificationsAsRead", 
+    [Authorize] async (NotificationService notificationService, HttpContext context) =>
+{
+    var authorId = GetUserId(context.User);
+    await notificationService.MarkNotificationsAsRead(authorId!);
+        
+    return Results.Ok();
+});
 
 app.MapPost("api/NotificationAPI/AddNotification/{authorId}",
     [Authorize] async (NotificationService notificationService, HttpContext context, [FromBody] NotificationBody notificationBody, string authorId) =>
-    {
-        notificationBody.UserName = GetUserName(context.User);
-        notificationBody.Date = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
-        notificationBody.Checked = false;
-        
-        var notificationAuthor = await notificationService.GetAsync(authorId);
-
-        if (notificationAuthor == null)
-            await CreateNotificationsForAuthor(authorId, notificationService);
-        
-        await notificationService.AddNotification(notificationBody, authorId);
-        
-        return Results.Ok();
-    });
-
-string? GetUserId(ClaimsPrincipal user) =>
-    user.Claims.Where(x => x.Type == IdentityClaims.Sub)?.FirstOrDefault()?.Value;
-
-string? GetUserName(ClaimsPrincipal user) =>
-    user.Claims.Where(x => x.Type == "name")?.FirstOrDefault()?.Value;
-
-//TODO ВЫНЕСТИ ЭТО В СЕРВИС
-async Task CreateNotificationsForAuthor(string authorId, NotificationService notificationService)
 {
-    Notification notification = new() { AuthorId = authorId! };
-    await notificationService.CreateAsync(notification);
-}
+    notificationBody.UserName = GetUserName(context.User);
+    notificationBody.Date = DateTime.Now.ToLongDateString() + " " + DateTime.Now.ToShortTimeString();
+    notificationBody.Checked = false;
+        
+    var notificationAuthor = await notificationService.GetAsync(authorId);
+    if (notificationAuthor == null)
+        await notificationService.CreateAsync(authorId);
+        
+    await notificationService.AddNotification(notificationBody, authorId);
+        
+    return Results.Ok();
+});
+
+string? GetUserId(ClaimsPrincipal user) => user.Claims.Where(x => x.Type == IdentityClaims.Sub)?.FirstOrDefault()?.Value;
+
+string? GetUserName(ClaimsPrincipal user) => user.Claims.Where(x => x.Type == "name")?.FirstOrDefault()?.Value;
 
 app.Run();

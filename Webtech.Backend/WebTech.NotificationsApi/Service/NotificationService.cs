@@ -19,8 +19,12 @@ public class NotificationService
     public async Task<List<Notification>> GetAllAsync() => await _notificationsCollection.Find(_ => true).ToListAsync();
     
     public async Task<Notification> GetAsync(string id) => await _notificationsCollection.Find(x => x.AuthorId == id).FirstOrDefaultAsync();
-    
-    public async Task CreateAsync(Notification notification) => await _notificationsCollection.InsertOneAsync(notification);
+
+    public async Task CreateAsync(string authorId)
+    {
+        Notification notification = new() { AuthorId = authorId! };
+        await _notificationsCollection.InsertOneAsync(notification);
+    } 
 
     public async Task MarkNotificationsAsRead(string authorId)
     {
