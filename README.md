@@ -16,12 +16,14 @@ The web application consists of 5 APIs:
 - Well, a regular gateway using Ocelot.
 
 <h3 align="left">Technology stack used on the server side</h3>
+
 - .NET 8, EF 8, SignalR 7.
 - MSSQL + mongoDB.
 - Ocelot API Gateway.
 - Minimal API with clean architecture.
 
 <h3 align="left">Usage and Testing</h3>
+
 - Clone the repository to your device.
 - Download the missing ones json files {download link}.
 - Change your database connection strings (inside json files).
