@@ -27,7 +27,6 @@ The web application consists of 5 APIs:
 - Clone the repository to your device.
 - Download the missing ones json files {download link}.
 - Change your database connection strings (inside json files).
-- Clone the repository to your device.
 - Now you can run .NET and React applications.
 
 <h5 align="left">Thank you for reading to this line! Have a nice day 🥰</h5>
