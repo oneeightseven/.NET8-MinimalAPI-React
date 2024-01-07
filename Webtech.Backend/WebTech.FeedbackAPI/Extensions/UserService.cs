@@ -1,6 +1,5 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
-using WebTech.FeedbackAPI.Data;
 using WebTech.FeedbackAPI.Models;
 
 namespace WebTech.FeedbackAPI.Extensions;
@@ -19,8 +18,13 @@ public class UserService
     public async Task<List<FeedbackUser>> GetAllAsync() => await _usersCollection.Find(_ => true).ToListAsync();
 
     public async Task<FeedbackUser> GetAsync(string id) => await _usersCollection.Find(x => x.Id == id).FirstOrDefaultAsync();
-    
-    public async Task CreateAsync(FeedbackUser user) => await _usersCollection.InsertOneAsync(user);
+
+    public async Task CreateAsync(string userId)
+    {
+        FeedbackUser feedbackUser = new() { Id = userId! };
+        await _usersCollection.InsertOneAsync(feedbackUser);
+    } 
+
 
     public async Task RemoveAsync(string id) => await _usersCollection.DeleteOneAsync(x => x.Id == id);
 

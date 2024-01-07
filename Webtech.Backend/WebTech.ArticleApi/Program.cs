@@ -1,8 +1,6 @@
 using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using WebTech.ArticleApi.Data;
 using WebTech.ArticleApi.Extensions;
 using WebTech.ArticleApi.Models.Dto;
@@ -11,8 +9,7 @@ using WebTech.ArticleApi.Service.IService;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
-builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDatabase"));
-builder.Services.AddSingleton<UserService>();
+var identityClaimsSub = builder.Configuration.GetValue<string>("IdentityClaims:Sub");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -24,30 +21,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHttpClient("Feedback", x => x.BaseAddress = new Uri(builder.Configuration["ServiceUrls:FeedbackAPI"]!));
 builder.Services.AddScoped<IFeedbackService, FeedbackService>();
 
-builder.Services.AddSwaggerGen(options =>
-{
-    options.AddSecurityDefinition(name:"Bearer", securityScheme: new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Description = "Enter the Bearer Authorization string as following: 'Bearer Generated-JWT-Token'",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference()
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = JwtBearerDefaults.AuthenticationScheme
-                }
-            }, new string[]{}
-        }
-    });
-});
+builder.Services.AddSwaggerGen();
 
 builder.AddAppAuthentication();
 builder.Services.AddAuthorization();
@@ -154,7 +128,6 @@ app.MapPost("api/ArticleApi/DecrementDislikeArticle/{bodyId}", [Authorize] async
     Results.Ok(await context.ArticleHeaders.Where(x => x.ArticleBodyId == bodyId)
         .ExecuteUpdateAsync(s => s.SetProperty(x => x.Dislikes, x => x.Dislikes - 1))));
 
-string? GetUserId(ClaimsPrincipal user) =>
-    user.Claims.Where(x => x.Type == IdentityClaims.Sub)?.FirstOrDefault()?.Value;
+string? GetUserId(ClaimsPrincipal user) => user.Claims.Where(x => x.Type == identityClaimsSub)?.FirstOrDefault()?.Value;
 
 app.Run();

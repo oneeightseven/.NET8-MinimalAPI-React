@@ -2,42 +2,18 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
-using WebTech.FeedbackAPI.Data;
 using WebTech.FeedbackAPI.Extensions;
 using WebTech.FeedbackAPI.Models;
 
 var builder = WebApplication.CreateSlimBuilder(args);
 
+var identityClaimsSub = builder.Configuration.GetValue<string>("IdentityClaims:Sub");
+
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDatabase"));
 builder.Services.AddSingleton<UserService>();
 
 builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddSwaggerGen(options =>
-{
-    options.AddSecurityDefinition(name: "Bearer", securityScheme: new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Description = "Enter the Bearer Authorization string as following: 'Bearer Generated-JWT-Token'",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference()
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = JwtBearerDefaults.AuthenticationScheme
-                }
-            },
-            new string[] { }
-        }
-    });
-});
+builder.Services.AddSwaggerGen();
 
 builder.AddAppAuthentication();
 builder.Services.AddAuthorization();
@@ -88,7 +64,7 @@ app.MapPost("api/FeedbackApi/AddLike/{bodyId}",
         var feedbackUser = await userService.GetAsync(userId!);
 
         if (feedbackUser == null)
-            await AddFeedBackUser(userId!, userService);
+            await userService.CreateAsync(userId!);
 
         await userService.RemoveDislikeAsync(userId, bodyId);
         await userService.AddLikeAsync(userId!, bodyId);
@@ -102,7 +78,7 @@ app.MapPost("api/FeedbackApi/AddDislike/{bodyId}",
         var feedbackUser = await userService.GetAsync(userId!);
 
         if (feedbackUser == null)
-            await AddFeedBackUser(userId!, userService);
+            await userService.CreateAsync(userId!);
 
         await userService.RemoveLikeAsync(userId, bodyId);
         await userService.AddDislikeAsync(userId!, bodyId);
@@ -116,13 +92,6 @@ app.MapDelete("api/FeedbackApi/DeleteById/{userId}",
         Results.Ok();
     });
 
-string? GetUserId(ClaimsPrincipal user) =>
-    user.Claims.Where(x => x.Type == IdentityClaims.Sub)?.FirstOrDefault()?.Value;
+string? GetUserId(ClaimsPrincipal user) => user.Claims.Where(x => x.Type == identityClaimsSub)?.FirstOrDefault()?.Value;
 
-//TODO ВЫНЕСТИ ЭТО В СЕРВИС
-async Task AddFeedBackUser(string userId, UserService userService)
-{
-    FeedbackUser feedbackUser = new() { Id = userId! };
-    await userService.CreateAsync(feedbackUser);
-}
 app.Run();

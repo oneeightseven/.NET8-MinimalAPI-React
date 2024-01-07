@@ -35,12 +35,8 @@ public static class WebApplicationBuilderExtensions
             {
                 OnMessageReceived = context =>
                 {
-                    // Извлекаем токен из параметров запроса
                     var accessToken = context.Request.Query["access_token"];
-
-                    // Устанавливаем токен для аутентификации
                     context.Token = accessToken;
-
                     return Task.CompletedTask;
                 }
             };

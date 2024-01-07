@@ -1,8 +1,4 @@
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
-
 namespace WebTech.NotificationsApi.Models;
-
 public class NotificationBody
 {
     public string? Date { get; set; }

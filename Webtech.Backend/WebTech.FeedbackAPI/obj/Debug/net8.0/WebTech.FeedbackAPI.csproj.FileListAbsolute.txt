@@ -52,3 +52,4 @@
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.FeedbackAPI/obj/Debug/net8.0/WebTech.FeedbackAPI.genruntimeconfig.cache
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.FeedbackAPI/obj/Debug/net8.0/ref/WebTech.FeedbackAPI.dll
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.FeedbackAPI/bin/Debug/net8.0/Newtonsoft.Json.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.FeedbackAPI/obj/Debug/net8.0/WebTech.FeedbackAPI.sourcelink.json

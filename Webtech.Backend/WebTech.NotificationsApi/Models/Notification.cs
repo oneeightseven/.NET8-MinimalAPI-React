@@ -1,7 +1,6 @@
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace WebTech.NotificationsApi.Models;
-
 public class Notification
 {
     [BsonId] 

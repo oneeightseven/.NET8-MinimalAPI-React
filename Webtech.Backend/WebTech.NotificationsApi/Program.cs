@@ -2,58 +2,25 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.OpenApi.Models;
-using WebTech.NotificationsApi;
-using WebTech.NotificationsApi.Data;
 using WebTech.NotificationsApi.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebTech.NotificationsApi.Models;
 
 var builder = WebApplication.CreateSlimBuilder(args);
+var identityClaimsSub = builder.Configuration.GetValue<string>("IdentityClaims:Sub");
 
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDatabase"));
 builder.Services.AddSingleton<NotificationService>();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(options =>
-{
-    options.AddSecurityDefinition(name:"Bearer", securityScheme: new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Description = "Enter the Bearer Authorization string as following: 'Bearer Generated-JWT-Token'",
-        In = ParameterLocation.Header,
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
-    });
-    options.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference()
-                {
-                    Type = ReferenceType.SecurityScheme,
-                    Id = JwtBearerDefaults.AuthenticationScheme
-                }
-            }, new string[]{}
-        }
-    });
-});
+builder.Services.AddSwaggerGen();
 
 builder.AddAppAuthentication();
 builder.Services.AddAuthorization();
-builder.Services.AddSignalR();
 
-builder.Services.AddCors(options =>
-{
-    options.AddDefaultPolicy(builder =>
-    {
-        builder.WithOrigins("http://localhost:3000")
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            .AllowCredentials();
-    });
-});
+builder.Services.AddSignalR();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -63,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors();
+app.UseCors(corsPolicyBuilder => corsPolicyBuilder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.MapHub<NotificationHub>("notifications");
 
@@ -116,10 +83,10 @@ app.MapPost("api/NotificationAPI/AddNotification/{authorId}",
         
     await notificationService.AddNotification(notificationBody, authorId);
         
-    return Results.Ok();
+    return Results.Created();
 });
 
-string? GetUserId(ClaimsPrincipal user) => user.Claims.Where(x => x.Type == IdentityClaims.Sub)?.FirstOrDefault()?.Value;
+string? GetUserId(ClaimsPrincipal user) => user.Claims.Where(x => x.Type == identityClaimsSub)?.FirstOrDefault()?.Value;
 
 string? GetUserName(ClaimsPrincipal user) => user.Claims.Where(x => x.Type == "name")?.FirstOrDefault()?.Value;
 

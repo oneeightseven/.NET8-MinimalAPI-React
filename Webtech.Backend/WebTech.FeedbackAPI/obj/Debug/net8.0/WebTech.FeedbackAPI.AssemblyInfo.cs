@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebTech.FeedbackAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+deea42034a0f018f8c101bd355777afb5049d9fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebTech.FeedbackAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebTech.FeedbackAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

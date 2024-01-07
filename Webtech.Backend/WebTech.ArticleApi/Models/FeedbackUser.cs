@@ -4,12 +4,12 @@ namespace WebTech.ArticleApi.Models;
 
 public class FeedbackUser
 {
-    [BsonId] 
+    //[BsonId] 
     public string? Id { get; set; }
 
-    [BsonElement("LikedNews")] 
+    //[BsonElement("LikedNews")] 
     public List<string> LikedNews { get; set; } = new();
 
-    [BsonElement("DislikedNews")] 
+    //[BsonElement("DislikedNews")] 
     public List<string> DislikedNews { get; set; } = new();
 }
