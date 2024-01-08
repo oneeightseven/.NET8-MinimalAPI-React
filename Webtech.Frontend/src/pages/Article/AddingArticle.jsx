@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 const AddingArticle = () => {
 
     const navigate = useNavigate();
+
     useEffect(() => {
         getRole() === undefined && navigate("/login");
     }, [navigate]);

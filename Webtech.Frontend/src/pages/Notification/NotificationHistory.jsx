@@ -8,16 +8,14 @@ import Header from "../../components/Home/Header";
 
 const NotificationHistory = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [data, setData] = useState([]);
-
     const token = getToken();
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [data, setData] = useState([]);
 
     const fetchData = async () => {
         localStorage.setItem("countNotification", "0");
         setIsLoading(true);
-
         try {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             setData(await NotificationService.getNotifications());
@@ -31,13 +29,13 @@ const NotificationHistory = () => {
 
     useEffect(() => {
         fetchData().then();
-    },[]);
+    }, []);
 
 
     return (
         <>
             <Header/>
-           <NotificationCard isLoading={isLoading} data={data}></NotificationCard>
+            <NotificationCard isLoading={isLoading} data={data}></NotificationCard>
         </>
     );
 };

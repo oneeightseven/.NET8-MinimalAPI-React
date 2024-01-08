@@ -1,14 +1,14 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import Notifications from "../Auth/Notifications";
+import Notifications from "../Notification/Notifications";
 import {getRole} from "../../extensions/encryption";
 
 const AccountHeader = () => {
     return (<>
         {getRole() !== undefined ? (
-        <Notifications/>
+        <div style={{display:"none"}}><Notifications/></div>
             ): (
-            <></>
+            <div></div>
         )}
             <div className="container-fluid" style={{boxShadow: '1px 10px 80px black'}}>
                 <div className="row">

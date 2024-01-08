@@ -6,16 +6,13 @@ import {getToken} from "../../extensions/encryption";
 
 const MyArticles = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [data, setData] = useState([]);
-
     const token = getToken();
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [data, setData] = useState([]);
+
     const fetchData = async () => {
-
         setIsLoading(true);
-
         try {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             setData(await ArticleService.getUserFeedbackById());

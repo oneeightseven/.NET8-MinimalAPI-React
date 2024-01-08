@@ -1,12 +1,12 @@
 import React from 'react';
 import {Button, Image} from "react-bootstrap";
-import Eye from "../../eye.svg";
-import Clock from "../../clock.svg";
-import Like from "../../like.svg";
-import Dislike from "../../dislike.svg";
+import Eye from "../../css/images/eye.svg";
+import Clock from "../../css/images/clock.svg";
+import Like from "../../css/images/like.svg";
+import Dislike from "../../css/images/dislike.svg";
 import {Link} from "react-router-dom";
 
-const FeedbackCard = ({ isLoading, data }) => {
+const FeedbackCard = ({isLoading, data}) => {
     return (
         <>
             <h1 className={"text-xl-end mb-5"}>My articles</h1>
@@ -24,11 +24,11 @@ const FeedbackCard = ({ isLoading, data }) => {
                             </div>
                             <div className="offset-xl-4 col-xl-2 mt-xl-2 text-xl-end">
                                 <h6 style={{color: "gray"}}>{item?.views} <Image src={Eye}
-                                                                                style={{
-                                                                                    width: '20%',
-                                                                                    marginTop: '-2px'
-                                                                                }}
-                                                                                alt='Eye'/></h6>
+                                                                                 style={{
+                                                                                     width: '20%',
+                                                                                     marginTop: '-2px'
+                                                                                 }}
+                                                                                 alt='Eye'/></h6>
                             </div>
                             <div className="col-xl-1 text-xl-end mt-xl-2">
                                 <h6 style={{color: "gray"}}>{item?.readingTime}<Image src={Clock} style={{
@@ -44,8 +44,6 @@ const FeedbackCard = ({ isLoading, data }) => {
                             <div className="col-xl-8">
                                 <h6>{item?.header}</h6>
                             </div>
-
-
                             <div className={"px-5 mt-2 col-xl-4"}>
                                 <div className="d-flex align-items-center">
                                     <h5 style={{color: "gray"}}>{item?.likes} <Image src={Like} style={{
@@ -53,11 +51,10 @@ const FeedbackCard = ({ isLoading, data }) => {
                                         marginTop: '-8px'
                                     }} alt='Like'/></h5>
                                     <h5 style={{color: "gray"}}>{item?.dislikes} <Image src={Dislike}
-                                                                                       style={{width: '35%'}}
-                                                                                       alt='Dislike'/></h5>
+                                                                                        style={{width: '35%'}}
+                                                                                        alt='Dislike'/></h5>
                                 </div>
                             </div>
-
                             <div className="offset-xl-8 col-xl-4 text-end">
                                 <Link to={`/post/${item?.articleBodyId}`}>
                                     <Button variant={"light"}>More

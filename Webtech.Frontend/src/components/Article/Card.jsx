@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Image} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import Clock from '../../clock.svg'
-import Eye from '../../eye.svg'
-import Like from '../../like.svg'
-import Dislike from '../../dislike.svg'
+import Clock from '../../css/images/clock.svg'
+import Eye from '../../css/images/eye.svg'
+import Like from '../../css/images/like.svg'
+import Dislike from '../../css/images/dislike.svg'
 import ArticleService from "../../services/ArticleService";
 
 const Card = () => {

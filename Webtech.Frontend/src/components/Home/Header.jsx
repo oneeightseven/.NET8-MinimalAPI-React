@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {getRole} from "../../extensions/encryption";
-import Notifications from "../Auth/Notifications";
-import { ReactComponent as Noti } from '../../noti.svg'
+import Notifications from "../Notification/Notifications";
+import { ReactComponent as Noti } from '../../css/images/noti.svg'
 
 const Header = () => {
 

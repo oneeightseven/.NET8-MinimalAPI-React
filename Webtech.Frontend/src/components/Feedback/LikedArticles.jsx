@@ -7,16 +7,13 @@ import {getToken} from "../../extensions/encryption";
 
 const LikedArticles = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [data, setData] = useState([]);
-
     const token = getToken();
 
+    const [isLoading, setIsLoading] = useState(false);
+    const [data, setData] = useState([]);
+
     const fetchData = async () => {
-
         setIsLoading(true);
-
         try {
             axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
             setData(await ArticleService.getUserFeedbackLikeArticles());
@@ -25,7 +22,6 @@ const LikedArticles = () => {
         } finally {
             setIsLoading(false);
         }
-
     };
 
     useEffect(() => {

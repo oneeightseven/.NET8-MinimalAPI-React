@@ -15,6 +15,8 @@ The web application consists of 5 APIs:
 - Notification API, well, this API already sends notifications to article authors.
 - Well, a regular gateway using Ocelot.
 
+![scheme](https://imagess.hb.ru-msk.vkcs.cloud/Пустой%20диаграммой.png)
+
 <h3 align="left">Technology stack used on the server side</h3>
 
 - .NET 8, EF 8, SignalR 7.

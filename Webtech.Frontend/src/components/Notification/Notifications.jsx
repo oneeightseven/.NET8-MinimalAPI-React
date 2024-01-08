@@ -1,22 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {HubConnectionBuilder} from '@microsoft/signalr';
-import {useCookies} from "react-cookie";
 import FeedbackNotify from "../../notify/FeedbackNotify";
 import * as signalR from '@microsoft/signalr';
 import globalState from "../../extensions/globalState";
 import axios from "axios";
 import NotificationService from "../../services/NotificationService";
-
-const useToken = () => {
-    const [cookies] = useCookies(['token']);
-    return cookies.token;
-};
+import {getToken} from "../../extensions/encryption";
 
 const Notifications = () => {
 
-    const [noti, setNoti] = useState(localStorage.getItem('countNotification'));
+    const token = getToken();
 
-    const token = useToken();
+    const [noti, setNoti] = useState(localStorage.getItem('countNotification'));
 
     const fetchData = async () => {
 
@@ -30,8 +25,6 @@ const Notifications = () => {
 
 
     useEffect(() => {
-
-
         if (!globalState.isConnected) {
             const connection = new HubConnectionBuilder()
                 .withUrl('http://localhost:5252/notifications', {
@@ -58,7 +51,6 @@ const Notifications = () => {
                 localStorage.setItem('countNotification', noti + 1);
                 setNoti(prevValue => prevValue + 1);
             });
-
             fetchData().then();
         }
     }, [noti]);

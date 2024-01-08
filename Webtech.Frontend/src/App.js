@@ -8,7 +8,7 @@ import Authrorize from "./pages/Auth/Authrorize";
 import PersonalArea from "./pages/Auth/PersonalArea";
 import Registration from "./pages/Auth/Registration";
 import { ToastContainer, toast } from 'react-toastify';
-import Notifications from "./components/Auth/Notifications";
+import Notifications from "./components/Notification/Notifications";
 import NotificationHistory from "./pages/Notification/NotificationHistory";
 
 function App() {

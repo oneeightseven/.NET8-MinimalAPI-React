@@ -9,8 +9,9 @@ import LikedArticles from "../../components/Feedback/LikedArticles";
 import DislikedArticles from "../../components/Feedback/DislikedArticles";
 const PersonalArea = () => {
 
-    const [activeComponent, setComponentToShow] = useState('MyArticles');
+    const navigate = useNavigate();
 
+    const [activeComponent, setComponentToShow] = useState('MyArticles');
     const [buttonColors, setButtonColors] = useState({
         MyArticles: 'primary',
         LikedArticles: 'primary',
@@ -19,16 +20,13 @@ const PersonalArea = () => {
 
     const handleButtonClick = (component) => {
         setComponentToShow(component);
-
         const updatedButtonColors = {
             ...buttonColors,
             [component]: 'success',
         };
-
         setButtonColors(updatedButtonColors);
     };
 
-    const navigate = useNavigate();
 
     useEffect(() => {
         getRole() === undefined && navigate("/login");

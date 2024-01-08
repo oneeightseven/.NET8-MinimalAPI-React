@@ -4,8 +4,8 @@ import axios from "axios";
 import Header from "../../components/Home/Header";
 import ScreenshotSlider from "../../components/Article/ScreenshotSlider";
 import {Image} from "react-bootstrap";
-import Like from "../../like.svg";
-import Dislike from "../../dislike.svg";
+import Like from "../../css/images/like.svg";
+import Dislike from "../../css/images/dislike.svg";
 import ArticleService from "../../services/ArticleService";
 import {getToken} from "../../extensions/encryption";
 import AuthNotify from "../../notify/AuthNotify";
@@ -14,22 +14,17 @@ import NotificationService from "../../services/NotificationService";
 const PostBody = () => {
 
     const navigate = useNavigate();
-
     const {postId} = useParams();
-
     const token = getToken();
 
     const [isLiked, setIsLiked] = useState(false);
     const [isDisliked, setIsDisliked] = useState(false);
     const [likeCount, setLikeCount] = useState(0);
     const [dislikeCount, setDislikeCount] = useState(0)
-
     const [article, setArticle] = useState({articleHeader: {}, articleBody: {}});
     const [feedback, setFeedback] = useState({Like: false, Dislike: false});
-
     const [bodyId, setBodyId] = useState(0);
     const [authorId, setAuthorId] = useState(0);
-
     const [notification, setNotification] = useState({
         date: "",
         userName: "",
@@ -37,17 +32,17 @@ const PostBody = () => {
         articleTitle: "",
         statusNotification: false
     });
-
-    const imageUrls = [article.articleBody.imageUrl1, article.articleBody.imageUrl2, article.articleBody.imageUrl3];
+    const imageUrls = [
+        article.articleBody.imageUrl1,
+        article.articleBody.imageUrl2,
+        article.articleBody.imageUrl3
+    ];
 
     const likeStyle = {
-        color: isLiked ? 'red' : 'gray',
-        fontWeight: isLiked ? 'bold' : 'normal'
+        color: isLiked ? 'red' : 'gray', fontWeight: isLiked ? 'bold' : 'normal'
     };
-
     const dislikeStyle = {
-        color: isDisliked ? 'red' : 'gray',
-        fontWeight: isDisliked ? 'bold' : 'normal'
+        color: isDisliked ? 'red' : 'gray', fontWeight: isDisliked ? 'bold' : 'normal'
     };
 
     const handleLikeClick = async () => {
@@ -133,15 +128,13 @@ const PostBody = () => {
     useEffect(() => {
         fetchBody().then();
 
-        if (token !== undefined)
-        {
+        if (token !== undefined) {
             fetchFeedBack().then();
         }
 
     }, [article.articleHeader.likes, article.articleHeader.dislikes]);
 
-    return (
-        <>
+    return (<>
             <Header/>
             <div key={article.articleHeader.id} className="container mt-xl-2 pb-2"
                  style={{borderWidth: '1px', borderColor: 'black', backgroundColor: "white", borderRadius: "10px"}}>
@@ -159,8 +152,7 @@ const PostBody = () => {
                 <h4>{article.articleBody.body}</h4>
                 <ScreenshotSlider imageUrls={imageUrls}/>
             </div>
-        </>
-    );
+        </>);
 };
 
 export default PostBody;

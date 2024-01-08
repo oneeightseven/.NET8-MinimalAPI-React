@@ -1,16 +1,13 @@
 import React, {useState} from 'react';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from 'react-cookie';
 import ArticleService from "../../services/ArticleService";
 import ArticleNotify from "../../notify/ArticleNotify";
+import {getToken} from "../../extensions/encryption";
 
-const useToken = () => {
-    const [cookies] = useCookies(['token']);
-    return cookies.token;
-};
 const NewArticleForm = () => {
 
+    const token = getToken();
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
@@ -26,8 +23,6 @@ const NewArticleForm = () => {
             imageUrl3: ""
         }
     });
-
-    const token = useToken();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
