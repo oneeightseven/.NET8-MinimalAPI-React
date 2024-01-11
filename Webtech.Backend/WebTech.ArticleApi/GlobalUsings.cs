@@ -1,0 +1,14 @@
+global using System.Security.Claims;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.EntityFrameworkCore;
+global using WebTech.ArticleApi.Data;
+global using WebTech.ArticleApi.Models.Dto;
+global using WebTech.ArticleApi.Service;
+global using WebTech.ArticleApi.Service.IService;
+global using Newtonsoft.Json;
+global using WebTech.ArticleApi.Models;
+global using System.Text;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;

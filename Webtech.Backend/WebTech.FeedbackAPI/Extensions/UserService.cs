@@ -1,7 +1,3 @@
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using WebTech.FeedbackAPI.Models;
-
 namespace WebTech.FeedbackAPI.Extensions;
 
 public class UserService

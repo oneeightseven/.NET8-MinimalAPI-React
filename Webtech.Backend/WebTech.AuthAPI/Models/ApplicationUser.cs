@@ -1,6 +1,4 @@
-using Microsoft.AspNetCore.Identity;
-
-namespace WebTech.AuthAPI.Modells;
+namespace WebTech.AuthAPI.Models;
 
 public class ApplicationUser : IdentityUser
 {

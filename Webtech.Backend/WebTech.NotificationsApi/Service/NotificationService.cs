@@ -1,7 +1,3 @@
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using WebTech.NotificationsApi.Models;
-
 namespace WebTech.NotificationsApi.Service;
 
 public class NotificationService

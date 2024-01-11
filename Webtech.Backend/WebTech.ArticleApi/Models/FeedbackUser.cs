@@ -1,5 +1,3 @@
-using MongoDB.Bson.Serialization.Attributes;
-
 namespace WebTech.ArticleApi.Models;
 
 public class FeedbackUser

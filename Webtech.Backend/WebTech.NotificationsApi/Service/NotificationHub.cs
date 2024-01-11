@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.SignalR;
-
 namespace WebTech.NotificationsApi.Service;
 
 [Authorize]

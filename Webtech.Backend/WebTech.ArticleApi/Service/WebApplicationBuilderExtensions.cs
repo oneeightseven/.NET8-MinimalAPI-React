@@ -1,8 +1,4 @@
-using System.Text;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-
-namespace WebTech.ArticleApi.Extensions;
+namespace WebTech.ArticleApi.Service;
 
 public static class WebApplicationBuilderExtensions
 {

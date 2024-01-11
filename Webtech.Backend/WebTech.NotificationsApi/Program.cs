@@ -1,12 +1,3 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.OpenApi.Models;
-using WebTech.NotificationsApi.Service;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using WebTech.NotificationsApi.Models;
-
 var builder = WebApplication.CreateSlimBuilder(args);
 var identityClaimsSub = builder.Configuration.GetValue<string>("IdentityClaims:Sub");
 

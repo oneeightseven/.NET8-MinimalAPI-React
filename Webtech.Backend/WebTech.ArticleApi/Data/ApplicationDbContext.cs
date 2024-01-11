@@ -1,6 +1,3 @@
-using Microsoft.EntityFrameworkCore;
-using WebTech.ArticleApi.Models;
-
 namespace WebTech.ArticleApi.Data;
 
 public class ApplicationDbContext : DbContext

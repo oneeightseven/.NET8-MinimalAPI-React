@@ -1,4 +1,4 @@
-namespace WebTech.AuthAPI.Modells;
+namespace WebTech.AuthAPI.Models;
 
 public class LoginRequest
 {

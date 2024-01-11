@@ -1,11 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using WebTech.AuthAPI.Data;
-using WebTech.AuthAPI.Modells;
-using WebTech.AuthAPI.Service;
-using WebTech.AuthAPI.Service.IService;
-
 var builder = WebApplication.CreateSlimBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

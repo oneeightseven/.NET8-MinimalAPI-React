@@ -1,10 +1,3 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.OpenApi.Models;
-using WebTech.FeedbackAPI.Extensions;
-using WebTech.FeedbackAPI.Models;
-
 var builder = WebApplication.CreateSlimBuilder(args);
 
 var identityClaimsSub = builder.Configuration.GetValue<string>("IdentityClaims:Sub");

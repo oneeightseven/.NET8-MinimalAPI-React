@@ -1,9 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using WebTech.AuthAPI.Data;
-using WebTech.AuthAPI.Modells;
-using WebTech.AuthAPI.Service.IService;
-
 namespace WebTech.AuthAPI.Service;
 
 public class AuthService : IAuthService

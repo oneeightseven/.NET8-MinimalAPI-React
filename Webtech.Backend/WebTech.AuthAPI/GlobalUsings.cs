@@ -1,0 +1,14 @@
+global using System.Security.Claims;
+global using Microsoft.EntityFrameworkCore;
+global using System.Text;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using Microsoft.Extensions.Options;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.EntityFrameworkCore;
+global using WebTech.AuthAPI.Data;
+global using WebTech.AuthAPI.Models;
+global using WebTech.AuthAPI.Service;
+global using WebTech.AuthAPI.Service.IService;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

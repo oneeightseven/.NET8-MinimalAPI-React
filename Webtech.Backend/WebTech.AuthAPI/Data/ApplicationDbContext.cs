@@ -1,7 +1,3 @@
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using WebTech.AuthAPI.Modells;
-
 namespace WebTech.AuthAPI.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

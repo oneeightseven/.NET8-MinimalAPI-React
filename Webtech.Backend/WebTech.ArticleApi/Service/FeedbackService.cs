@@ -1,9 +1,4 @@
-using WebTech.ArticleApi.Models;
-using WebTech.ArticleApi.Service.IService;
-using Newtonsoft.Json;
-
 namespace WebTech.ArticleApi.Service;
-
 public class FeedbackService : IFeedbackService
 {
     private readonly IHttpClientFactory _httpClient;

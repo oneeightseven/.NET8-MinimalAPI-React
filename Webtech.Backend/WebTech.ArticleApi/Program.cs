@@ -1,12 +1,3 @@
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
-using WebTech.ArticleApi.Data;
-using WebTech.ArticleApi.Extensions;
-using WebTech.ArticleApi.Models.Dto;
-using WebTech.ArticleApi.Service;
-using WebTech.ArticleApi.Service.IService;
-
 var builder = WebApplication.CreateSlimBuilder(args);
 
 var identityClaimsSub = builder.Configuration.GetValue<string>("IdentityClaims:Sub");
