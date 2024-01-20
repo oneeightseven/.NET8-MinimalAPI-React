@@ -76,3 +76,4 @@
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.AuthAPI/obj/Debug/net8.0/WebTech.AuthAPI.pdb
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.AuthAPI/obj/Debug/net8.0/WebTech.AuthAPI.genruntimeconfig.cache
 /home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.AuthAPI/obj/Debug/net8.0/ref/WebTech.AuthAPI.dll
+/home/oneeightseven/Рабочий стол/WebTech/Webtech.Backend/WebTech.AuthAPI/obj/Debug/net8.0/WebTech.AuthAPI.sourcelink.json
