@@ -27,7 +27,7 @@ The web application consists of 5 APIs:
 <h3 align="left">Usage and Testing</h3>
 
 - Clone the repository to your device.
-- Download the missing ones json files {download link}.
+- Download the missing ones json files [download link](https://drive.google.com/file/d/172QzYfGO9oS8Nh8CBHALZPPkR7vUkr20/view).
 - Change your database connection strings (inside json files).
 - Now you can run .NET and React applications.
 
